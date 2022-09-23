@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32819.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataMigratorTests.cs", "DataMigratorTests.cs\DataMigratorTests.cs.csproj", "{AC441DC9-F31A-4AEF-BC68-63073AA42D5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataMigrator", "DataMigrator\DataMigrator.csproj", "{3CE1628C-AF62-48C7-B113-EAE4B3B20C49}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AC441DC9-F31A-4AEF-BC68-63073AA42D5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC441DC9-F31A-4AEF-BC68-63073AA42D5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC441DC9-F31A-4AEF-BC68-63073AA42D5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC441DC9-F31A-4AEF-BC68-63073AA42D5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CE1628C-AF62-48C7-B113-EAE4B3B20C49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CE1628C-AF62-48C7-B113-EAE4B3B20C49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CE1628C-AF62-48C7-B113-EAE4B3B20C49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CE1628C-AF62-48C7-B113-EAE4B3B20C49}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BFF95F59-5634-4A49-B30B-D0D22F8ECF08}
+	EndGlobalSection
+EndGlobal
