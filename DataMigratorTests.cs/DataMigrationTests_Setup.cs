@@ -1,24 +1,22 @@
 ﻿using Bogus;
 using DataMigrator;
-using DataMigratorTests.cs.Person;
-using DataMigratorTests.cs.PersonMigrationJob;
+using DataMigratorTests.cs.Dtos;
+using DataMigratorTests.cs.PersonMigration;
 
 namespace DataMigratorTests.cs;
 public partial class DataMigrationTests
 {
     private PersonRepository _personRepository;
     private PersonHttpClient _personHttpClient;
-    private PersonMigration _personMigration;
-    private DataMigrationJob<PersonDto> _job;
+    private DataMigrationJob<PersonDto, PersonJobDto> _job;
 
     public DataMigrationTests()
     {
         _personRepository = new PersonRepository();
         _personHttpClient = new PersonHttpClient();
-        _personMigration = new PersonMigration(_personRepository);
 
-        _job = new DataMigrationJob<PersonDto>(
-            _personMigration,
+        _job = new PersonMigrationJob(
+            _personRepository,
             _personHttpClient,
             _personRepository);
     }
@@ -30,5 +28,12 @@ public partial class DataMigrationTests
             .RuleFor(x => x.Age, f => f.Random.Int(1, 50))
             .RuleFor(x => x.Name, f => f.Person.FullName)
             .Generate(10);
+    }
+
+    public PersonJobDto GetPersonJobDto()
+    {
+        return new Faker<PersonJobDto>()
+            .RuleFor(x => x.CompanyId, f => f.Random.Int(1, 1000))
+            .Generate();
     }
 }

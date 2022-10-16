@@ -1,9 +1,9 @@
 ﻿using DataMigrator;
-using DataMigratorTests.cs.Person;
+using DataMigratorTests.cs.Dtos;
 
-namespace DataMigratorTests.cs.PersonMigrationJob;
+namespace DataMigratorTests.cs.PersonMigration;
 
-public class PersonRepository : IDestinyService<PersonDto>
+public class PersonRepository : IDestinyService<PersonDto, PersonJobDto>
 {
     public List<PersonDto> People { get; set; } = new();
 
@@ -12,7 +12,7 @@ public class PersonRepository : IDestinyService<PersonDto>
         return Task.CompletedTask;
     }
 
-    public Task<List<PersonDto>> Get()
+    public Task<List<PersonDto>> Get(PersonJobDto jobDto)
     {
         return Task.FromResult(People);
     }
@@ -22,15 +22,15 @@ public class PersonRepository : IDestinyService<PersonDto>
         People.Add(data);
     }
 
+    public void Remove(PersonDto data)
+    {
+        People.Remove(data);
+    }
+
     public Task<List<PersonDto>> GetByIds(List<int> idsToGet)
     {
         var people = People.Where(p => idsToGet.Contains(p.Id)).ToList();
 
         return Task.FromResult(people);
-    }
-
-    public void Remove(PersonDto data)
-    {
-        People.Remove(data);
     }
 }

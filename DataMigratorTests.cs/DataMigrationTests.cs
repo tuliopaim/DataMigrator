@@ -1,4 +1,4 @@
-using DataMigratorTests.cs.Person;
+using DataMigratorTests.cs.Dtos;
 
 namespace DataMigratorTests.cs;
 
@@ -9,11 +9,12 @@ public partial class DataMigrationTests
     {
         //arrange
         var initialData = GetRandomPerson();
+        var jobData = GetPersonJobDto();
 
         _personHttpClient.People = initialData;
 
         //act
-        await _job.Migrate();
+        await _job.Migrate(jobData);
 
         //assert
         foreach (var data in initialData)
@@ -30,6 +31,7 @@ public partial class DataMigrationTests
         //arrange
         var repositoryData = GetRandomPerson();
         var clientData = repositoryData.ToList();
+        var jobData = GetPersonJobDto();
 
         var removedData = new List<PersonDto> { clientData[1], clientData[4], clientData[6] };
 
@@ -38,7 +40,8 @@ public partial class DataMigrationTests
         _personHttpClient.People = clientData;
 
         //act
-        await _job.Migrate();
+        await _job.Migrate(jobData);
+
 
         //assert
         foreach (var data in removedData)
@@ -55,6 +58,7 @@ public partial class DataMigrationTests
     public async Task ShouldEditData()
     {
         //arrange
+        var jobData = GetPersonJobDto();
         var clientData = new List<PersonDto>
         {
             new PersonDto{ Id = 1, Name= "Túlio", Age = 24 },
@@ -70,7 +74,7 @@ public partial class DataMigrationTests
         _personRepository.People = repositoryData;
 
         //act
-        await _job.Migrate();
+        await _job.Migrate(jobData);
 
         //assert
         foreach (var data in clientData)

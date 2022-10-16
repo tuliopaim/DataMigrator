@@ -1,6 +1,6 @@
 ﻿using DataMigrator;
 
-namespace DataMigratorTests.cs.Person;
+namespace DataMigratorTests.cs.Dtos;
 
 public class PersonDto : IDto<PersonDto>
 {
